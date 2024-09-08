@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            var a=Math.floor((Math.random() * 3) + 1);
+            
+            function refresh(){
+                a=Math.floor((Math.random() * 3) + 1);
+            }
+            var u=0;
+            var c=0;
+            // rock=1 paper=2 scissor=3 compchoice=a
+            $("#b1").click(function(){
+                if(a==1){
+                    $("#res").append('Tie<br>');
+                    $(".innu").append(u+'<br>');
+                    $(".innc").append(c+'<br>');
+                    $(".choose").css('display','none');
+                }
+                if(a==2){
+                    $("#res").append('Computer chose paper you lose<br>');
+                    c=c+1;
+                    $(".innu").append(u+'<br>');
+                    $(".innc").append(c+'<br>');
+                    $(".choose").css('display','none');
+                }
+                if(a==3){
+                    $("#res").append('Computer chose scissors you win<br>');
+                    u=u+1;
+                    $(".innu").append(u+'<br>');
+                    $(".innc").append(c+'<br>');
+                    $(".choose").css('display','none');
+                }
+            });
+            $("#b2").click(function(){
+                if(a==2){
+                    $("#res").append('Tie<br>');
+                    $(".innu").append(u+'<br>');
+                    $(".innc").append(c+'<br>');
+                    $(".choose").css('display','none');
+                }
+                if(a==3){
+                    $("#res").append('Computer chose scissors you lose<br>');
+                    c=c+1;
+                    $(".innu").append(u+'<br>');
+                    $(".innc").append(c+'<br>');
+                    $(".choose").css('display','none');
+                }
+                if(a==1){
+                    $("#res").append('Computer chose rock you win<br>');
+                    u=u+1;
+                    $(".innu").append(u+'<br>');
+                    $(".innc").append(c+'<br>');
+                    $(".choose").css('display','none');
+                }
+            });
+            $("#b3").click(function(){
+                if(a==3){
+                    $("#res").append('Tie<br>');
+                    $(".innu").append(u+'<br>');
+                    $(".innc").append(c+'<br>');
+                    $(".choose").css('display','none');
+                }
+                if(a==1){
+                    $("#res").append('Computer chose rock you lose<br>');
+                    c=c+1;
+                    $(".innu").append(u+'<br>');
+                    $(".innc").append(c+'<br>');
+                    $(".choose").css('display','none');
+                }
+                if(a==2){
+                    $("#res").append('Computer chose paper you win<br>');
+                    u=u+1;
+                    $(".innu").append(u+'<br>');
+                    $(".innc").append(c+'<br>');
+                    $(".choose").css('display','none');
+                }
+            });
+            
+            
+            $("#b4").click(function(){
+                 refresh();
+                 $(".choose").show();
+            });
+            $("#b5").click(function(){
+                $(".choose").css('display','none');
+                $(".proceed").css('display','none');
+                $("#b6").show();
+                if(u>c){
+                    alert("You win !!")
+                }
+                if(c>u){
+                    alert("You lose...")
+                }
+                if(c==u){
+                    alert("It's a tie")
+                }
+
+            });
+            $("#b6").click(function(){
+                $(".choose").show();
+                $(".proceed").show();
+                u=0;
+                c=0;
+                $("#res").empty();
+                $(".innu").empty();
+                $(".innc").empty();
+                $("#b6").css('display','none');
+            })
+        });
+    </script>
+    <link rel="stylesheet" type="text/css" href="game.css">
+
+    <style>
+        
+        .d{display: inline-block;}
+    </style>
+    <title>Rock Paper Scissors !!</title>
+</head>
+<body>
+    <div class="container">
+        <div class="choose">
+            <label for="u">Choose One:</label>
+            <button id="b1">Rock</button>
+            <button id="b2">Paper</button>
+            <button id="b3">Scissors</button><br><br>
+           </div>
+           <div class="proceed">
+           <button id="b4">Proceed to Next Round</button><br>
+           </div>
+           <div class="result">
+               <table class="tab">
+                   <tr>
+                      <th>Result</th>
+                      <th>Score</th>
+                   </tr>
+                   <tr>
+                       <td id="res"></td>
+                       <td class="score">
+                           <table id="inner">
+                               <tr>
+                                   <th class="in">You</th>
+                                   <th class="in">Computer</th>
+                               </tr>
+                               <tr>
+                                   <td class="you innu"></td>
+                                   <td class="comp innc"></td>
+                               </tr>
+                           </table>
+                           
+                           
+                           
+                       </td>
+                   </tr>
+                   
+               </table>
+               <button id="b5">End Game</button>
+               <button id="b6">Play Again</button>
+       
+           </div>
+    </div>
+    
+    
+</body>
+</html>
